@@ -22,7 +22,7 @@ const Header = () => {
                 if (user.role_id === 1) { // if ADMIN is signed in
                     return (
                         <>
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <Link className="nav-link active" to="users/add">Add User</Link>
                             </li>
                             <li className="nav-item">
@@ -30,7 +30,7 @@ const Header = () => {
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link active" to="users/:id/edit">Edit User</Link>
-                            </li>
+                            </li> */}
                             <li className="nav-item">
                                 <div className="dropdown">
                                     <section className="nav-link active dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" onClick={handleOpen}>

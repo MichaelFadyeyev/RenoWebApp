@@ -1,4 +1,4 @@
-const AppRouts = {
+const AppRouts = {    
     // controllers
     adminControllers: "http://localhost/projects/renowebapp/admin/handlers",
     controllers: "http://localhost/projects/renowebapp/handlers",
