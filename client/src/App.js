@@ -16,7 +16,8 @@ import EditUser from './components/users/EditUser';
 import DeleteUser from './components/users/DeleteUser';
 import LoginUser from './components/users/LoginUser';
 import LogoutUser from './components/users/LogoutUser';
-import Projects from './components/content_blocks/projects'
+import Projects from './components/content_blocks/projects';
+import MainPage from './components/content_blocks/main_page/MainPage';
 //
 import Stuff from './components/content_blocks/stuff'
 import AddWorker from './components/content_blocks/stuff/AddWorker'
@@ -81,7 +82,7 @@ function App() {
           <main role="main" className="pb-3">
             <div className="container">
               <Routes>
-                <Route path="/" element={<div>Головна сторінка</div>} />
+                <Route path="/" element={<MainPage/>} />
                 <Route path="users/add" element={<AddUser />} />
                 <Route path="users/login" element={<LoginUser />} />
                 <Route path="users/logout" element={<LogoutUser />} />

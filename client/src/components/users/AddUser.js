@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import Context from '../Context';
 import AppRouts from "../AppRouts";
 
 const AddUser = () => {
@@ -6,6 +7,8 @@ const AddUser = () => {
     let i;
 
     /* #region -> form fields, states, error msg*/
+const {setUser} = useContext(Context);
+
     const [name, setName] = useState("");
     const [login, setLogin] = useState("");
     const [password1, setPassword1] = useState("");
@@ -164,16 +167,21 @@ const AddUser = () => {
             },
             body: JSON.stringify({ name, login, password1, password2, phone }),
         })
-            .then((response) => response.text())
-            .then((data) => { i = data.toString() })
-            .then(() => {
-                console.log("Success:", i)
+            .then((response) => {
+                if(response.status === 200){
+                    return response.json();
+                }
+                else throw new Error (response.status)
+            })
+            .then((data)=>{
+                setUser(data);
+                localStorage.setItem('loggedInUser', JSON.stringify(data));
+                window.location.replace('/');
+                // console.log(data);
             })
             .catch((error) => {
                 console.error("Error:", error);
             });
-
-        alert(i);
     }
 
 

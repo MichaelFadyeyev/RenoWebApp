@@ -1,9 +1,7 @@
 <?php
 
-require_once ('../providers/db_provider.php');
-require ("mail/mail_service.php");
-//require ('./models/user.php');
-
+require_once('../providers/db_provider.php');
+require("mail/mail_service.php");
 
 class UsersDbService extends DbProvider
 {
@@ -30,7 +28,15 @@ class UsersDbService extends DbProvider
             throw new Exception('Помилка виконання запиту на додавання користувача');
         }
         $stmt->close();
-        return new User ($name, $login, $password, $phone, $role_id, $status_id);
+        $user = [
+            "name" => $name,
+            "login" => $login,
+            "password" => "",
+            "phone" => $phone,
+            "role_id" => $role_id,
+            "status_id" => $status_id,
+        ];
+        return $user;
     }
 
     public function check_login_unique($login)
@@ -105,7 +111,4 @@ class UsersDbService extends DbProvider
         $stmt->close();
         return 0;
     }
-
-
-    
 }

@@ -30,8 +30,8 @@ $phone = $_POST['phone'];
 try {
     $password = md5($password1);
     $role_id = 1;
-    $status_id = 1;
-    $service->registry($name, $login, $password, $phone, $role_id, $status_id);
+    $status_id = 3; // unconfirmed
+    $response = $service->registry($name, $login, $password, $phone, $role_id, $status_id);
     if ($response) {
         echo json_encode($response);
     } else
