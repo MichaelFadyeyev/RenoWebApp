@@ -24,7 +24,7 @@ $_POST = json_decode(file_get_contents('php://input'), true);
 $name = $_POST['name'];
 $login = $_POST['login'];
 $password1 = $_POST['password1'];
-$password1 = $_POST['password2'];
+// $password1 = $_POST['password2'];
 $phone = $_POST['phone'];
 
 try {

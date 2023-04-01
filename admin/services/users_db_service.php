@@ -1,6 +1,7 @@
 <?php
 
 require_once ('../providers/db_provider.php');
+require ("mail/mail_service.php");
 //require ('./models/user.php');
 
 
@@ -29,7 +30,6 @@ class UsersDbService extends DbProvider
             throw new Exception('Помилка виконання запиту на додавання користувача');
         }
         $stmt->close();
-        $status_id = 2;
         return new User ($name, $login, $password, $phone, $role_id, $status_id);
     }
 
@@ -82,6 +82,7 @@ class UsersDbService extends DbProvider
         $user = $stmt->get_result()->fetch_assoc();
         if (isset($user)) {
             $stmt->close();
+            $status_id = 2;
             return $user;
         }
         //
