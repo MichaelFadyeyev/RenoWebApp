@@ -72,23 +72,29 @@ const LoginUser = () => {
 
     const submitHandler = async (event) => {
         event.preventDefault();
+
         try {
-            const response =
-                fetch(`${AppRouts.adminControllers}/login_handler.php/`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ login, password }),
-                });
-            (await response).text()
+            fetch(`${AppRouts.adminControllers}/login_handler.php/`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ login, password }),
+            })
+                .then((response) => {
+                    if (response.status === 200)
+                        return response.json();
+                    else
+                        throw new Error(response.status)
+                })
                 .then((data) => {
-                    setUser(JSON.parse(data));
-                    localStorage.setItem('loggedInUser', data);
+                    setUser(data);
+                    localStorage.setItem('loggedInUser', JSON.stringify(data));
                     window.location.replace('/');
+                    // console.log(data);
                 })
                 .catch((error) => {
-                    console.error("Error:", error);
+                    console.error("Error: ", error.message);
                 });
 
         } catch (error) {

@@ -7,7 +7,7 @@ const AddUser = () => {
     let i;
 
     /* #region -> form fields, states, error msg*/
-const {setUser} = useContext(Context);
+    const { setUser } = useContext(Context);
 
     const [name, setName] = useState("");
     const [login, setLogin] = useState("");
@@ -160,28 +160,32 @@ const {setUser} = useContext(Context);
 
     const submitHandler = (event) => {
         event.preventDefault();
-        fetch(`${AppRouts.adminControllers}/registry_handler.php/`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ name, login, password1, password2, phone }),
-        })
-            .then((response) => {
-                if(response.status === 200){
-                    return response.json();
-                }
-                else throw new Error (response.status)
+        try {
+            fetch(`${AppRouts.adminControllers}/registry_handler.php/`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ name, login, password1, password2, phone }),
             })
-            .then((data)=>{
-                setUser(data);
-                localStorage.setItem('loggedInUser', JSON.stringify(data));
-                window.location.replace('/');
-                // console.log(data);
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
+                .then((response) => {
+                    if (response.status === 200)
+                        return response.json();
+                    else
+                        throw new Error(response.status)
+                })
+                .then((data) => {
+                    setUser(data);
+                    localStorage.setItem('loggedInUser', JSON.stringify(data));
+                    window.location.replace('/');
+                    // console.log(data);
+                })
+                .catch((error) => {
+                    console.error("Error: ", error);
+                });
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 
 
