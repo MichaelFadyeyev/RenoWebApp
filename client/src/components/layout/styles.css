@@ -1,0 +1,36 @@
+/* region dropdown */
+.dropdown {
+	position: relative;
+}
+
+.dropdown section{
+	caret-color: transparent;
+	cursor: pointer;
+}
+
+.menu {
+	position: absolute !important;
+	list-style-type: none;
+	margin-top: -0.25rem;
+	padding: 0.5rem 0;
+	border: 1px solid rgba(0, 0, 0, .15);
+	width: fit-content;
+	background-color: white;
+	border-radius: 0.25rem;
+}
+
+.menu>li {
+	margin: 0;
+	padding: 4px 16px;
+	background-color: white;
+}
+
+.menu>li:hover {
+	background-color: whitesmoke;
+}
+
+.menu>li>* {
+	text-align: left;
+	cursor: pointer;
+}
+/* end-region */

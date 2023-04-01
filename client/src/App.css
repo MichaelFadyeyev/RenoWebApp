@@ -2,16 +2,36 @@
   text-align: center;
 }
 
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body {
+  height: 100%;
 }
 
+.footer {
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
+.err-msg {
+  color: red;
+  margin-bottom: 0.2rem;
+}
+
+.form-card {
+  box-shadow: 10px 20px 30px silver;
+}
+
+.btn {
+  width: 7rem;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.no-cursor > div > form div > label {
+  caret-color: transparent;
+}
